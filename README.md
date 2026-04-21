@@ -25,20 +25,7 @@ Programming Language: Java
 Automation Framework: Selenium WebDriver
 Test Runner: TestNG / JUnit (update based on what you use)
 Build Tool: Maven / Gradle (update if needed)
-Project Structure
-src/
-├── main/
-│   ├── java/
-│   │   ├── browsers/        # Browser setup, drivers, and configurations
-│   │   ├── pages/           # Page Object Model (POM) classes
-│   │   └── utilities/       # Reusable helpers, constants, and common functions
-│   └── resources/           # Config files (e.g., properties, test data, environment configs)
-│
-└── test/
-    ├── java/
-    │   ├── tests/           # Test cases and test suites
-    │   └── utilities/       # Test-specific helpers (e.g., data providers, base test classes)
-    └── resources/ 
+ 
 Getting Started
 Clone the repository
 Install dependencies
