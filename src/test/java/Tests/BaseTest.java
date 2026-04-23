@@ -7,9 +7,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.*;
+import utils.jsonReader;
 
 public class BaseTest {
    protected WebDriver driver;
+   jsonReader loginData;
   //  @BeforeClass
    // @Parameters({"browser"})
   //  public void setDriver(@Optional ("chrome")String browserName){
@@ -32,12 +34,14 @@ public class BaseTest {
    //  driver=  WebDriverFactory.initDriver("chrome");
 
     //}
-    @BeforeMethod
+    @BeforeClass
     public void setup()
     {
+        loginData=new jsonReader("loginData.json");
         driver=WebDriverFactory.initDriver("edge");
+        driver.get("http://dev.ees.cloud4rain.com:6329/home");
     }
-    @AfterMethod
+    @AfterClass
     public void  teardown()
     {
         driver.quit();

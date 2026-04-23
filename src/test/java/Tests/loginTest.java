@@ -15,7 +15,7 @@ import utils.jsonReader;
 import java.util.Objects;
 
 public class loginTest extends BaseTest {
-    jsonReader jsonReader;
+    jsonReader loginData;
     Register register;
     login login;
     Faker faker = new Faker();
@@ -36,7 +36,7 @@ public class loginTest extends BaseTest {
     public void validLoginWithID() {
         register = new Register(driver);
         login = new login(driver);
-        jsonReader= new jsonReader("loginData");
+        loginData= new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/register");
 
         register.registerAsNotAmember("Ahmed Essam", "01278823950","ahmedessam999@gmail.com","السعودية","Ahmed.essam@001","Ahmed.essam@001","29804147892413", faker.regexify("[A-Z][0-9]{8}"));
@@ -84,12 +84,12 @@ public class loginTest extends BaseTest {
         });
         register = new Register(driver);
         login = new login(driver);
-        jsonReader= new jsonReader("loginData");
+        loginData= new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/register");
-        register.registerAsNotAmember(jsonReader.getData("registerName"), jsonReader.getData("registerPhone"), jsonReader.getData("registerEmail"), "مصر" , jsonReader.getData("registerPassword"), jsonReader.getData("registerConfirmPassword"), jsonReader.getData("registerID"), ""+ faker.regexify("[A-Z][0-9]{8}"));
+        register.registerAsNotAmember(loginData.getData("registerName"), loginData.getData("registerPhone"), loginData.getData("registerEmail"), "مصر" , loginData.getData("registerPassword"), loginData.getData("registerConfirmPassword"), loginData.getData("registerID"), ""+ faker.regexify("[A-Z][0-9]{8}"));
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"swal2-html-container\"]")).getText().contains("تم إنشاء الحساب بنجاح"));
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username"), jsonReader.getData("password"));
+        login.loginByEmail(loginData.getData("username"), loginData.getData("password"));
         Assert.assertTrue(driver.getCurrentUrl().equals("http://dev.ees.cloud4rain.com:6329/home/setting/personal-profile"));
         login.logOut();
         Assert.assertTrue(driver.getCurrentUrl().equals("http://dev.ees.cloud4rain.com:6329/auth/login"));
@@ -166,7 +166,7 @@ public class loginTest extends BaseTest {
     public void loginWithIncorrectPassword() {
         login = new login(driver);
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username"), "WrongPassword123");
+        login.loginByEmail(loginData.getData("username"), "WrongPassword123");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -175,9 +175,9 @@ public class loginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void loginWithIncorrectEmail() {
         login = new login(driver);
-        jsonReader = new jsonReader("loginData");
+        loginData = new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail("nonexistent@example.com", jsonReader.getData("password"));
+        login.loginByEmail("nonexistent@example.com", loginData.getData("password"));
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -216,9 +216,9 @@ public class loginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void loginWithSpacesInPassword() {
         login = new login(driver);
-        jsonReader = new jsonReader("loginData");
+        loginData = new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username"), "Ahmed.essam@001 ");
+        login.loginByEmail(loginData.getData("username"), "Ahmed.essam@001 ");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -238,9 +238,9 @@ public class loginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void loginWithWrongPasswordCase() {
         login = new login(driver);
-        jsonReader = new jsonReader("loginData");
+        loginData = new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username"), "ahmed.essam@007");
+        login.loginByEmail(loginData.getData("username"), "ahmed.essam@007");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -259,9 +259,9 @@ public class loginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void loginWithWhitespaceOnlyPassword() {
         login = new login(driver);
-        jsonReader = new jsonReader("loginData");
+       loginData = new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username"), "     ");
+        login.loginByEmail(loginData.getData("username"), "     ");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -432,7 +432,7 @@ public class loginTest extends BaseTest {
     public void loginWithCommonDefaultPassword() {
         login = new login(driver);
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username"), "12345678");
+        login.loginByEmail(loginData.getData("username"), "12345678");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -442,7 +442,7 @@ public class loginTest extends BaseTest {
     public void loginWithAnotherCommonPassword() {
         login = new login(driver);
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username"), "password");
+        login.loginByEmail(loginData.getData("username"), "password");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -521,9 +521,9 @@ public class loginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void loginWithLeadingSpacesInEmail() {
         login = new login(driver);
-        jsonReader = new jsonReader("loginData");
+        loginData = new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail("  " + jsonReader.getData("username"), jsonReader.getData("password"));
+        login.loginByEmail("  " + loginData.getData("username"), loginData.getData("password"));
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -532,9 +532,9 @@ public class loginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void loginWithTrailingSpacesInEmail() {
         login = new login(driver);
-        jsonReader = new jsonReader("loginData");
+       loginData = new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail(jsonReader.getData("username") + "  ", jsonReader.getData("password"));
+        login.loginByEmail(loginData.getData("username") + "  ", loginData.getData("password"));
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
@@ -543,9 +543,9 @@ public class loginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void loginWithLeadingAndTrailingSpaces() {
         login = new login(driver);
-        jsonReader = new jsonReader("loginData");
+        loginData = new jsonReader("loginData");
         driver.get("http://dev.ees.cloud4rain.com:6329/auth/login");
-        login.loginByEmail("  " + jsonReader.getData("username") + "  ", "  " + jsonReader.getData("password") + "  ");
+        login.loginByEmail("  " + loginData.getData("username") + "  ", "  " + loginData.getData("password") + "  ");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
     }
 

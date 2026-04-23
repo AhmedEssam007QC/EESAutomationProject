@@ -16,7 +16,6 @@ public class navigationFromNoughbar extends BaseTest {
 
     public void clickOnAboutTheSyndicate() {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
        aboutTheSyndigate.clickOnAboutTheSyndigateHeader();
        Assert.assertTrue(driver.getPageSource().contains("عن النقابة"));
     }
@@ -24,11 +23,12 @@ public class navigationFromNoughbar extends BaseTest {
     @Test(priority = 1)
     @Description("Verify that the user can choose the current president tab from navigation bar")
     @Severity(SeverityLevel.NORMAL)
-    public void chooseCurrentPresidentTab() {
+    public void chooseCurrentPresidentTab() throws InterruptedException {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
         aboutTheSyndigate.currentPresidentmenu();
+       // Thread.sleep(2000);
         Assert.assertTrue(driver.getPageSource().contains("نقيب المهندسين"));
+      //  Thread.sleep(1000);
     }
 
     @Test (priority = 2)
@@ -36,7 +36,6 @@ public class navigationFromNoughbar extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void choosePreviousPresidentTab() {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
         aboutTheSyndigate.previousPresidentmenu();
         Assert.assertTrue(driver.getPageSource().contains("المهندس"));
     }
@@ -46,7 +45,6 @@ public class navigationFromNoughbar extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void chooseSyndicateCouncilTab() {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
         aboutTheSyndigate.chooseSyndicateCouncilFromMenu();
         Assert.assertTrue(driver.getPageSource().contains("مجلس النقابة"));
     }
@@ -54,31 +52,35 @@ public class navigationFromNoughbar extends BaseTest {
     @Test (priority = 4)
     @Description("Verify that the user can click on trips from navigation bar")
     @Severity(SeverityLevel.NORMAL)
-    public void clickOnTrips() {
+    public void clickOnTrips() throws InterruptedException {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
         aboutTheSyndigate.clickOnTrip();
+     //   Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), "http://dev.ees.cloud4rain.com:6329/home/trips");
+       // Thread.sleep(1000);
     }
 
     @Test (priority = 5)
     @Description("Verify that the user can click on services from navigation bar")
     @Severity(SeverityLevel.NORMAL)
-    public void clickOnServices() {
+    public void clickOnServices() throws InterruptedException {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
         aboutTheSyndigate.clickOnService();
+       // Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), "http://dev.ees.cloud4rain.com:6329/home/services");
+      //  Thread.sleep(1000);
     }
 
     @Test (priority = 6)
     @Description("Verify that the user can click on news and events from navigation bar")
     @Severity(SeverityLevel.NORMAL)
-    public void clickOnNewsAndEvents() {
+    public void clickOnNewsAndEvents() throws InterruptedException {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
+
         aboutTheSyndigate.clickOnNewsAndEvents();
+      //  Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), "http://dev.ees.cloud4rain.com:6329/home/news");
+      // Thread.sleep(1000);
     }
 
     @Test (priority = 7)
@@ -86,7 +88,7 @@ public class navigationFromNoughbar extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void clickOnContactUS() {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
+
         aboutTheSyndigate.clickOnContactUS();
         Assert.assertTrue(driver.getPageSource().contains("تواصل معنا"));
     }
@@ -94,11 +96,13 @@ public class navigationFromNoughbar extends BaseTest {
     @Test (priority = 8)
     @Description("Verify that the user can click on engineering division from navigation bar")
     @Severity(SeverityLevel.NORMAL)
-    public void clickOnEngineeringDivision() {
+    public void clickOnEngineeringDivision() throws InterruptedException {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-        driver.get("http://dev.ees.cloud4rain.com:6329/home");
+
         aboutTheSyndigate.clickOnEngineeringDivision();
+      //  Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), "http://dev.ees.cloud4rain.com:6329/home/EngineeringDivisions");
+      //  Thread.sleep(1000);
     }
 
 

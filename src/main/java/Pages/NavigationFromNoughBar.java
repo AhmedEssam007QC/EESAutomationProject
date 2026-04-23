@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NavigationFromNoughBar extends BasePage {
 
@@ -31,39 +32,48 @@ public class NavigationFromNoughBar extends BasePage {
     {
         click(aboutTheSyndigateHeaderLocator);
         click(currentPresident);
+        waitForText("نقيب المهندسين");
     }
     public void previousPresidentmenu()
     {
         click(aboutTheSyndigateHeaderLocator);
         click(previouspresident);
+        waitForText("المهندس");
     }
 
     public void chooseSyndicateCouncilFromMenu()
     {
         click(aboutTheSyndigateHeaderLocator);
         click(syndicateCouncil);
+        waitForText("مجلس النقابة");
     }
     public void clickOnTrip()
     {
         click(tripLocator);
+        waitForUrlContains("trips");
     }
     public void  clickOnService()
     {
         click(serviceLocator);
+        waitForUrlContains("services");
     }
     public void clickOnEngineeringDivision()
     {
         click(engineeringDivision);
+        waitForUrlContains("EngineeringDivisions");
     }
     public void clickOnNewsAndEvents()
     {
         click(newsAndEvents);
+        waitForUrlContains("news");
     }
 
     public void clickOnContactUS()
     {
         click(contactUS);
+        waitForUrlToBe("http://dev.ees.cloud4rain.com:6329/home/contact");
     }
+
 
 
 }
