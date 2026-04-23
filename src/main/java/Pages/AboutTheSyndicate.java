@@ -61,5 +61,6 @@ public class AboutTheSyndicate extends BasePage{
         click(seeMoreResponsibilities);
         waitForText("تتولي نقابه");
         click(closePopupResponsibility);
+
     }
 }

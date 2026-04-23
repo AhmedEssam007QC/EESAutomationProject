@@ -48,6 +48,7 @@ public class AboutTheSyndicateTest extends BaseTest {
         about.clickOnAboutTheSyndigateHeader();
         about.clickonSeeMoreResponsibilities();
         Assert.assertTrue(driver.getPageSource().contains("تتولي نقابه"));
+
     }
 
 }
