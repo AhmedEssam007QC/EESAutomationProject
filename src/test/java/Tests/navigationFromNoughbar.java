@@ -88,7 +88,6 @@ public class navigationFromNoughbar extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void clickOnContactUS() {
         aboutTheSyndigate = new NavigationFromNoughBar(driver);
-
         aboutTheSyndigate.clickOnContactUS();
         Assert.assertTrue(driver.getPageSource().contains("تواصل معنا"));
     }
@@ -104,6 +103,7 @@ public class navigationFromNoughbar extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), "http://dev.ees.cloud4rain.com:6329/home/EngineeringDivisions");
       //  Thread.sleep(1000);
     }
+
 
 
 }

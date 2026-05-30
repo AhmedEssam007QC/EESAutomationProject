@@ -11,11 +11,12 @@ public class NavigationFromNoughBar extends BasePage {
     private final By currentPresident = By.id("Header_Li_2_Item_Loop_1_2");
     private final By previouspresident = By.id("Header_Li_2_Item_Loop_1_3");
     private final By syndicateCouncil = By.id("Header_Li_2_Item_Loop_1_4");
-    private final By tripLocator = By.id("Header_A_3_Item_Loop_2_1");
+    private final By tripLocator = By.id("Header_Li_3_Item_Loop_2_1");
     private final By serviceLocator = By.id("Header_Li_3_Item_Loop_2_2");
     private final By engineeringDivision= By.id("Header_A_3_Item_Loop_2_3");
     private final By newsAndEvents =By.id("Header_A_3_Item_Loop_2_4");
     private final By contactUS = By.id("Header_A_3_Item_Loop_2_5");
+    private final By login=By.id("HeaderAuthActions_A_1");
 
 
 
@@ -72,6 +73,10 @@ public class NavigationFromNoughBar extends BasePage {
     {
         click(contactUS);
         waitForUrlToBe("http://dev.ees.cloud4rain.com:6329/home/contact");
+    }
+    public void clickOnLogin()
+    {
+        click(login);
     }
 
 

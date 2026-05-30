@@ -41,11 +41,11 @@ public class BaseTest {
         driver=WebDriverFactory.initDriver("edge");
         driver.get("http://dev.ees.cloud4rain.com:6329/home");
     }
-    @AfterClass
-    public void  teardown()
-    {
-        driver.quit();
-    }
+//    @AfterClass
+//    public void  teardown()
+//    {
+//        driver.quit();
+//    }
 
 
 }
